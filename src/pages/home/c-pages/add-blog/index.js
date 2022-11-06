@@ -1,16 +1,17 @@
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import React, { memo,useEffect,useState } from 'react'
-import { Button, Checkbox, Form, Input,message } from 'antd';
+import { Button, Checkbox, Form, Input,Select,message } from 'antd';
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { uploadImage } from '../../../../service/upload'
 import { AddBlogWrapper } from './style'
 import { useCallback } from 'react';
 import { addBlog } from '../../../../service/atricle';
+import { useRef } from 'react';
 
 const AddBlog = memo(() => {
   // editor 实例
   const [editor, setEditor] = useState(null)                   // JS 语法
-  const [form,setForm] = useState({})
+  const formRef = useRef()
 
   // 编辑器内容
   const [html, setHtml] = useState('<p>hello</p>')
@@ -52,6 +53,9 @@ const AddBlog = memo(() => {
           setEditor(null)
       }
   }, [editor])
+  const onTypeChange = useCallback((value)=>{
+    formRef.current.setFieldsValue({ type: value });
+  },[formRef])
 
   const handleSubmit = useCallback((values) => {
     console.log('表单提交',values)
@@ -70,6 +74,7 @@ const AddBlog = memo(() => {
   return (
     <AddBlogWrapper>
         <Form
+            ref={formRef}
             name="basic"
             layout='inline'
             initialValues={{ remember: true }}
@@ -93,6 +98,35 @@ const AddBlog = memo(() => {
                 rules={[{ required: true, message: '关键字不能为空!' }]}
             >
                 <Input />
+            </Form.Item>
+            <Form.Item name="type" label="文章类型" rules={[{ required: true }]}>
+                <Select
+                    style={{ width: 240 }}
+                    placeholder="请选择文章类型"
+                    options={[
+                        {
+                        value: 1,
+                        label: 'JavaScript',
+                        },
+                        {
+                        value: 2,
+                        label: 'CSS特效',
+                        },
+                        {
+                        value: 3,
+                        label: 'Vue',
+                        },
+                        {
+                        value: 4,
+                        label: 'React',
+                        },
+                        {
+                        value: 5,
+                        label: '数据可视化',
+                        },
+                    ]}
+                    onChange={onTypeChange}
+                    />
             </Form.Item>
 
             <Form.Item name="isPublic" valuePropName="checked">
