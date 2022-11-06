@@ -41,7 +41,7 @@ export default [
         component: AddBlog
       },
       {
-        path: "/home/blogdetail",
+        path: "/home/blogdetail/:id",
         component: BlogDetail
       },
     ]

@@ -8,3 +8,20 @@ export function addBlog(data){
         data:data
     })
 }
+
+// 添加博客
+export function queryBlogListPage(queryParams){
+  return request({
+      url:'/article/publiclist',
+      method:'get',
+      params:queryParams
+  })
+}
+
+// 添加博客
+export function queryBlogDetail(id){
+  return request({
+      url:`/article/detail/${id}`,
+      method:'get',
+  })
+}

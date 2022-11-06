@@ -12,7 +12,9 @@ instance.interceptors.request.use(config => {
 
   // 2.某一些请求要求用户必须携带token, 如果没有携带, 那么直接跳转到登录页面
   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
-
+  if(config.headers.showLoading === '1'){
+    
+  }
   // 3.params/data序列化的操作
   // console.log("请求被拦截");
 
