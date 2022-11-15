@@ -1,6 +1,6 @@
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import React, { memo,useEffect,useState } from 'react'
-import { Button, Checkbox, Form, Input,Select,message } from 'antd';
+import {  Checkbox, Form, Input,Select,message } from 'antd';
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { uploadImage } from '../../../../service/upload'
 import { AddBlogWrapper } from './style'
@@ -39,7 +39,7 @@ const AddBlog = memo(() => {
         // 最后插入图片
         uploadImage(file).then(res => {
             console.log('上传图片成功')
-            let url ='http://localhost:5002/' +res.data.filename
+            let url ='http://codedeep.cn:5506/' +res.data.filename
             insertFn(url, '', '')
         })
     }
@@ -99,7 +99,7 @@ const AddBlog = memo(() => {
             >
                 <Input />
             </Form.Item>
-            <Form.Item name="type" label="文章类型" rules={[{ required: true }]}>
+            <Form.Item name="type" label="文章类型" rules={[{ required: true ,message: '文章类型不能为空!' }]}>
                 <Select
                     style={{ width: 240 }}
                     placeholder="请选择文章类型"
@@ -153,9 +153,10 @@ const AddBlog = memo(() => {
             </Form.Item>
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
+                {/* <Button type="primary" htmlType="submit">
                 Submit
-                </Button>
+                </Button> */}
+                <button className="custom-btn btn-12" type='submit'><span>新增!</span><span>这里新增</span></button>
             </Form.Item>
             </Form>
             {/* <div className='editor'>

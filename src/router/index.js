@@ -12,7 +12,7 @@ export default [
     path: "/",
     exact: true,
     render:()=>{
-      return <Redirect to="/home"></Redirect>
+      return <Redirect to="/login"></Redirect>
   }
     
   },
