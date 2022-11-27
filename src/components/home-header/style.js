@@ -18,5 +18,12 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     color:#fff;
     font-size: 18px;
+    .item{
+      color:#fff;
+      margin-right:10px;
+      a{
+        color:#fff;
+      }
+    }
   }
 `

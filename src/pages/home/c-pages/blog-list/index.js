@@ -13,8 +13,14 @@ export default memo(function BlogList(props) {
   const handleQuery = useCallback(()=>{
     setIsloading(true)
     queryBlogListPage({pageNum:1,pageSize:10}).then(res => {
-      setArticleList(res.data)
+      console.log('结果',res)
+      if(res?.code === 200 ){
+        setArticleList(res.data)
+      }
       setIsloading(false)
+    }).catch(err => {
+      debugger
+      console.log('err:',err)
     })
   },[])
   useEffect(()=>{

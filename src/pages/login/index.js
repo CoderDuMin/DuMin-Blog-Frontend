@@ -1,4 +1,4 @@
-import React, { memo,useState } from 'react'
+import React, { memo,useState,useEffect } from 'react'
 // import { Button} from 'antd';
 
 import { LoginWrapper } from './style'
@@ -19,11 +19,19 @@ const Login = memo(() => {
 
   const handleLogin = useCallback(()=>{
     login(account,password).then(res => {
-      dispatch(changeUserInfoAction(res.data))
-      localStorage.setItem('token',res.token)
-      history.replace({pathname:'/home'})
-    })
+        dispatch(changeUserInfoAction(res.data))
+        localStorage.setItem('token',res.token)
+        history.replace({pathname:'/home'})
+      
+    }).catch()
   },[dispatch,account,password,history])
+
+  useEffect(() => {
+   if(localStorage.getItem('token')){
+    history.replace({pathname:'/home'})
+   }
+  }, [history])
+  
 
   return (
     <LoginWrapper>
@@ -44,6 +52,10 @@ const Login = memo(() => {
             {/* <div className='custom-btn btn-12'  onClick={e => handleLogin()}>登录</div> */}
             <button className="custom-btn btn-12"  onClick={e => handleLogin()}><span>登录</span><span>这里!</span></button>
           </form>
+        </div>
+        <div className='tips'>
+          <p>游客账号:visitor</p>
+          <p>密码:123456</p>
         </div>
 
       {/* <div className="container">

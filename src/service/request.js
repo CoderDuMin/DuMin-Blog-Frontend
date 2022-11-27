@@ -32,13 +32,15 @@ instance.interceptors.response.use(res => {
         console.log("请求错误");
         break;
       case 401:
-        console.log("未授权访问");
+        alert("未授权访问");
+        window.localStorage.clear()
+        window.location.href = 'http://www.codedeep.cn:5505'
         break;
       default:
         console.log("其他错误信息");
     }
   }
-  return err;
+  return err.response;
 });
 
 export default instance;

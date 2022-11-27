@@ -25,7 +25,14 @@ export default memo(function BlogDetail(props) {
   return (
     <BlogDetailWrapper>
       <h2>博客详情</h2>
-      <p>{articleInfo.title}</p>
+      <p className='article-title'>{articleInfo?.title}</p>
+      <div className='intro'>
+        <span className='keyword'>关键词:{articleInfo?.keywords}</span>
+        <div className='creator'>
+          <span className='user'>创建用户:{}</span>
+          <span className='create'>创建时间:{articleInfo.createTime}</span>
+        </div>
+      </div>
       <div className='editor'>
           <Editor
               defaultConfig={editorConfig}

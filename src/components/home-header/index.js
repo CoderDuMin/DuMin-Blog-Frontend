@@ -20,7 +20,7 @@ export default memo(function HomeHeader() {
         {
           discoverMenus.map(item => {
             return (
-              <div key={item.link}>
+              <div key={item.link} className="item">
                 <NavLink to={item.link}>{item.title}</NavLink>
               </div>
             )

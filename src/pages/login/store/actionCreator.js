@@ -6,15 +6,15 @@ export const changeUserInfoAction = (userinfo) => ({
   userInfo:userinfo
 }) 
 
-export const loginAction = (account,password) => {
-  return dispatch => {
-    login(account,password).then(res => {
-      console.log('登录成功')
-      dispatch(changeUserInfoAction(res.data))
-      localStorage.setItem('token',res.token)
-      window.history.replaceState({},'','/#/home')
-    }).catch(err=>{
-      console.log(err);
-    })
-  }
-}
+// export const loginAction = (account,password) => {
+//   return dispatch => {
+//     login(account,password).then(res => {
+//       console.log('登录成功')
+//       dispatch(changeUserInfoAction(res.data))
+//       localStorage.setItem('token',res.token)
+//       window.history.replaceState({},'','/#/home')
+//     }).catch(err=>{
+//       console.log(err);
+//     })
+//   }
+// }
