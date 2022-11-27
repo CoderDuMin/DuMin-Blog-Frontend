@@ -25,5 +25,18 @@ export const HeaderWrapper = styled.div`
         color:#fff;
       }
     }
+
+    .userInfo{
+      margin-left: 15px;
+      color:#fff;
+      &>span{
+        cursor: pointer;
+        font-size: 14px;
+        margin-left:5px;
+        &:hover{
+          color:#1890ef;
+        }
+      }
+    }
   }
 `

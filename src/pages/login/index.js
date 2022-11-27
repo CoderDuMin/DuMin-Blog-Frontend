@@ -19,9 +19,12 @@ const Login = memo(() => {
 
   const handleLogin = useCallback(()=>{
     login(account,password).then(res => {
+      if(res.data){
         dispatch(changeUserInfoAction(res.data))
         localStorage.setItem('token',res.token)
         history.replace({pathname:'/home'})
+      }
+        
       
     }).catch()
   },[dispatch,account,password,history])
@@ -29,6 +32,8 @@ const Login = memo(() => {
   useEffect(() => {
    if(localStorage.getItem('token')){
     history.replace({pathname:'/home'})
+   }else{
+    window.location.href = 'http://codedeep.cn:5505/?#/login'
    }
   }, [history])
   

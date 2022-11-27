@@ -12,7 +12,7 @@ export default memo(function BlogList(props) {
   
   const handleQuery = useCallback(()=>{
     setIsloading(true)
-    queryBlogListPage({pageNum:1,pageSize:10}).then(res => {
+    queryBlogListPage({pageNum:0,pageSize:30}).then(res => {
       console.log('结果',res)
       if(res?.code === 200 ){
         setArticleList(res.data)
