@@ -51,7 +51,7 @@ export default memo(function BlogList(props) {
             message.success('删除成功');
             handleQuery()
           }).catch(err => {
-            message.error('删除失败'+err);
+            message.error('删除失败,错误原因：'+err.msg);
           })
         },
         onCancel() {
