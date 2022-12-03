@@ -25,3 +25,10 @@ export function queryBlogDetail(id){
       method:'get',
   })
 }
+// 删除博客
+export function deleteBlog(id){
+  return request({
+      url:`/article/delete/${id}`,
+      method:'delete',
+  })
+}

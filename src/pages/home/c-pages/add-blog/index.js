@@ -39,7 +39,7 @@ const AddBlog = memo(() => {
         // 最后插入图片
         uploadImage(file).then(res => {
             console.log('上传图片成功')
-            let url ='http://codedeep.cn:5506/' +res.data.filename
+            let url ='http://1.117.247.44:5506/' +res.data.filename
             insertFn(url, '', '')
         })
     }

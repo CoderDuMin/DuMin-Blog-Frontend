@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect,useState } from 'react'
-import {  Spin,Dropdown,Modal} from 'antd';
+import {  Spin,Dropdown,Modal,message} from 'antd';
 import { EllipsisOutlined , ExclamationCircleOutlined} from '@ant-design/icons'
-import { queryBlogListPage } from '../../../../service/atricle'
+import { deleteBlog, queryBlogListPage } from '../../../../service/atricle'
 import { BlogListWrapper } from './style';
 import { useHistory } from 'react-router-dom';
 import { parseDate } from '@/utils/time.js'
@@ -47,7 +47,12 @@ export default memo(function BlogList(props) {
         icon: <ExclamationCircleOutlined />,
         content: '确定要删除这篇文章吗?',
         onOk() {
-          console.log('OK');
+          deleteBlog(id).then(res => {
+            message.success('删除成功');
+            handleQuery()
+          }).catch(err => {
+            message.error('删除失败'+err);
+          })
         },
         onCancel() {
           console.log('Cancel');
