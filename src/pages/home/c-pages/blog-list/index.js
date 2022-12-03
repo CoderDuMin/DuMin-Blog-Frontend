@@ -1,9 +1,12 @@
 import React, { memo, useCallback, useEffect,useState } from 'react'
-import {  Spin} from 'antd';
+import {  Spin,Dropdown,Modal} from 'antd';
+import { EllipsisOutlined , ExclamationCircleOutlined} from '@ant-design/icons'
 import { queryBlogListPage } from '../../../../service/atricle'
 import { BlogListWrapper } from './style';
 import { useHistory } from 'react-router-dom';
 import { parseDate } from '@/utils/time.js'
+
+const { confirm } = Modal
 
 export default memo(function BlogList(props) {
 
@@ -31,6 +34,27 @@ export default memo(function BlogList(props) {
   const itemClick = useCallback((id)=>{
     history.push(`/home/blogdetail/${id}`)
   },[history])
+  const handleEdit = useCallback((e,id)=>{
+    e.stopPropagation()
+    console.log('修改',id)
+  },[])
+  const handleDelete = useCallback((e,id)=>{
+    e.stopPropagation()
+    console.log('删除',id)
+    if(id){
+      confirm({
+        title: '提示',
+        icon: <ExclamationCircleOutlined />,
+        content: '确定要删除这篇文章吗?',
+        onOk() {
+          console.log('OK');
+        },
+        onCancel() {
+          console.log('Cancel');
+        },
+      });
+    }
+  },[])
   return (
     <BlogListWrapper>
       <h2>博客列表</h2>
@@ -40,7 +64,26 @@ export default memo(function BlogList(props) {
             articleList.map(item => {
               return (
                 <div className="item" key={item.id} onClick={e => itemClick(item.id)}>
-                  <div className="title text-nowrap">{item.title}</div>
+                  <div className='header'>
+                    <div className="title text-nowrap">{item.title}</div>
+                    <Dropdown 
+                      trigger={'hover'}
+                      menu={
+                        {items:[
+                          {
+                          label:(<div onClick={e => handleEdit(e,item.id)}>修改</div>),
+                          key:'edit'
+                          },
+                          {
+                            label:(<div onClick={e => handleDelete(e,item.id)}>删除</div>),
+                            key:'del'
+                            },
+                        ]}
+                      }
+                    >
+                      <EllipsisOutlined style={{fontSize:'24px'}}/>
+                    </Dropdown>
+                  </div>
                   <div className='info'>
                     <div className='keywords text-nowrap'>关键字：{item.keywords}</div>
                     <div className="type text-nowrap">类型：{item.type}</div>

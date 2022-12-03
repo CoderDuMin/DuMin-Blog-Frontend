@@ -25,12 +25,22 @@ export const BlogListWrapper = styled.div`
       &:hover{
         box-shadow: 0 5px 15px rgba(0,0,0,.1);
       }
-      .title{
-        font-size:18px;
-        font-weight: bolder;
-        width:100%;
+      .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding-bottom: 15px;
         border-bottom: 1px solid #eee;
+
+        .title{
+          font-size:18px;
+          font-weight: bolder;
+          width:80%;
+          margin-right: 10px;
+        }
+        .more{
+          flex:1;
+        }
       }
       .info{
         display: flex;
@@ -39,9 +49,9 @@ export const BlogListWrapper = styled.div`
         font-size: 14px;
         color:#333;
         padding: 10px 0;
-        .key-words{
+        .keywords{
           flex:1.2;
-          margin-right: 5px;
+          margin-right: 10px;
         }
         .type{
           flex:1;
