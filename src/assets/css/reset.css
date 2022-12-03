@@ -56,3 +56,6 @@
   }
   
  
+  .w-e-full-screen-container{
+    z-index: 9999;
+  }

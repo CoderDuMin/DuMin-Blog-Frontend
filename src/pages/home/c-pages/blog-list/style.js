@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const BlogListWrapper = styled.div`
+  %btw{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   width: 100%;
   min-height: 600px;
   padding: 15px;
@@ -11,13 +16,44 @@ export const BlogListWrapper = styled.div`
     flex-wrap: wrap;
     align-items: center;
     .item{
-      margin: 15px 0;
+      margin: 15px 10px;
       padding:10px 15px;
       border: 1px solid #eee;
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0,0,0,.1);
+      cursor: pointer;
       &:hover{
         box-shadow: 0 5px 15px rgba(0,0,0,.1);
+      }
+      .title{
+        font-size:18px;
+        font-weight: bolder;
+        width:100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      .info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        color:#333;
+        padding: 10px 0;
+        .key-words{
+          flex:1.2;
+          margin-right: 5px;
+        }
+        .type{
+          flex:1;
+        }
+      }
+      .other-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        font-size: 14px;
+        color:#999;
       }
     }
     @media screen and (max-width: 767px) {
@@ -27,7 +63,7 @@ export const BlogListWrapper = styled.div`
     }
     @media screen and (min-width: 767px ) and (max-width: 1279px ) {
       .item{
-        width: 33%;
+        width: 30%;
       }
     }
     @media screen and (min-width: 1280px ) and (max-width: 1920px ) {

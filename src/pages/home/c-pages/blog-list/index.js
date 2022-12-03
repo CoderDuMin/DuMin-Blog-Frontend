@@ -3,6 +3,7 @@ import {  Spin} from 'antd';
 import { queryBlogListPage } from '../../../../service/atricle'
 import { BlogListWrapper } from './style';
 import { useHistory } from 'react-router-dom';
+import { parseDate } from '@/utils/time.js'
 
 export default memo(function BlogList(props) {
 
@@ -39,14 +40,14 @@ export default memo(function BlogList(props) {
             articleList.map(item => {
               return (
                 <div className="item" key={item.id} onClick={e => itemClick(item.id)}>
-                  <div className="title">{item.title}</div>
+                  <div className="title text-nowrap">{item.title}</div>
                   <div className='info'>
-                    <div className='keywords'>{item.keywords}</div>
-                    <div className="type">{item.type}</div>
+                    <div className='keywords text-nowrap'>关键字：{item.keywords}</div>
+                    <div className="type text-nowrap">类型：{item.type}</div>
                   </div>
                   <div className='other-info'>
-                    <span>更新时间:{item.editTime}</span>
                     <span>作者:{item.userId}</span>
+                    <span>更新时间:{parseDate(item.editTime)}</span>
                   </div>
                 </div>
               )
