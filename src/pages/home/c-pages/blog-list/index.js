@@ -59,7 +59,7 @@ export default memo(function BlogList(props) {
         },
       });
     }
-  },[])
+  },[handleQuery])
   return (
     <BlogListWrapper>
       <h2>博客列表</h2>

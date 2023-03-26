@@ -1,4 +1,4 @@
-import { login } from '../../../service/login'
+
 import * as actionTypes from './constants'
 
 export const changeUserInfoAction = (userinfo) => ({
