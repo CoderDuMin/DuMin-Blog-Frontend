@@ -33,7 +33,7 @@ const Login = memo(() => {
    if(localStorage.getItem('token')){
     history.replace({pathname:'/home'})
    }else{
-    window.location.href = 'http://localhost:3000/?#/login'
+    window.location.href = 'http://1.117.247.44:5505/?#/login'
    }
   }, [history])
   
