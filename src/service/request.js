@@ -34,7 +34,7 @@ instance.interceptors.response.use(res => {
       case 401:
         alert("未授权访问");
         window.localStorage.clear()
-        window.location.href = 'http://www.codedeep.cn:5505'
+        window.location.href = 'http://1.117.247.44:5505'
         break;
       default:
         console.log("其他错误信息");
